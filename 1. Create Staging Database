@@ -1,0 +1,9 @@
+--Creating a database for the raw data
+IF NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name='UniversityStagingDB')
+BEGIN 
+CREATE DATABASE UniversityStagingDB
+END
+GO
+
+
+

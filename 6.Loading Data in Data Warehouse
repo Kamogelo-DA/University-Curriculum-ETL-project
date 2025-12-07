@@ -1,0 +1,50 @@
+
+--Inserting Data in Year1 modules table in the data warehouse
+INSERT INTO [UniversityDW].[dbo].[DW_Year1Modules] 
+            (Module_Code, Module_Description, Module_Credits, Module_Type)
+SELECT 
+    s.Module_Code,
+    s.Module_Description,
+    s.Module_Credits,
+    s.Module_Type
+FROM 
+    [UniversityStagingDB].[dbo].[Year1Modules] AS s
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [UniversityDW].[dbo].[DW_Year1Modules] AS d
+);
+GO
+
+--Inserting Data in Year2 modules table in the data warehouse
+INSERT INTO [UniversityDW].[dbo].[DW_Year2Modules] 
+            (Module_Code, Module_Description, Module_Credits, Module_Type)
+SELECT 
+    a.Module_Code,
+    a.Module_Description,
+    a.Module_Credits,
+    a.Module_Type
+FROM 
+    [UniversityStagingDB].[dbo].[Year2Modules] AS a
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [UniversityDW].[dbo].[DW_Year2Modules] AS b
+);
+GO
+
+--Inserting Data in Year3 modules table in the data warehouse
+INSERT INTO [UniversityDW].[dbo].[DW_Year3Modules]
+            (Module_Code, Module_Description, Module_Credits, Module_Type)
+SELECT 
+    c.Module_Code,
+    c.Module_Description,
+    c.Module_Credits,
+    c.Module_Type
+FROM 
+    [UniversityStagingDB].[dbo].[Year3Modules] AS c
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM [UniversityDW].[dbo].[DW_Year3Modules] AS e
+);
+GO
+
+--

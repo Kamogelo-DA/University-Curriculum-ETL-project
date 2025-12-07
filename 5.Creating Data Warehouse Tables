@@ -1,0 +1,46 @@
+
+--Creating  Year1 modules table for the  data warehouse
+IF NOT EXISTS (SELECT* FROM [UniversityDW].sys.tables WHERE name = 'DW_Year1Modules')
+BEGIN
+CREATE TABLE [UniversityDW].[dbo].[DW_Year1Modules]
+ (
+    DWCourse_Id INT IDENTITY(1,1) PRIMARY KEY ,
+    Module_Code VARCHAR(500) ,
+    Module_Description VARCHAR(500),
+    Module_Credits INT,
+    Module_Type VARCHAR(500),
+    Load_Date DATETIME DEFAULT GETDATE()
+);
+END;
+GO
+
+--Creating Year2 modules table for the data warehouse
+IF NOT EXISTS (SELECT* FROM [UniversityDW].sys.tables WHERE name = 'DW_Year2Modules')
+BEGIN
+CREATE TABLE [UniversityDW].dbo.DW_Year2Modules
+ (
+    DWCourse_Id INT IDENTITY(1,1) PRIMARY KEY  ,
+    Module_Code VARCHAR(500) ,
+    Module_Description VARCHAR(500),
+    Module_Credits INT,
+    Module_Type VARCHAR(500),
+    Load_Date DATETIME DEFAULT GETDATE()
+);
+END;
+GO
+
+--Creating Year3 modules tables for the data warehouse
+IF NOT EXISTS (SELECT* FROM [UniversityDW].sys.tables WHERE name = 'DW_Year3Modules')
+BEGIN
+CREATE TABLE [UniversityDW].dbo.DW_Year3Modules
+ (
+    DW_Course_Id INT IDENTITY(1,1) PRIMARY KEY  ,
+    Module_Code VARCHAR(500) ,
+    Module_Description VARCHAR(500),
+    Module_Credits INT,
+    Module_Type VARCHAR(500),
+    Load_Date DATETIME DEFAULT GETDATE()
+);
+END;
+GO
+
